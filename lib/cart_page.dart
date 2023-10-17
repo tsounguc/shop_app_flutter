@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'gobal_variables.dart';
+import 'cart_provider.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context).cart;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cart"),
@@ -26,7 +28,9 @@ class CartPage extends StatelessWidget {
             ),
             subtitle: Text("Size: ${cartItem['size']}"),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<CartProvider>(context, listen: false).removeProduct(cartItem);
+              },
               icon: const Icon(
                 Icons.delete,
                 color: Colors.red,
