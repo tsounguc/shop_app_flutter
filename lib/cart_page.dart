@@ -8,7 +8,12 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context).cart;
+    // final cart = Provider.of<CartProvider>(context).cart;
+    // provider is trigger by the extension method watch().
+    // It gives the same result as the line above
+    // watch() is an extension on BuildContext from flutter
+    final cart = context.watch<CartProvider>().cart;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cart"),
@@ -40,7 +45,7 @@ class CartPage extends StatelessWidget {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text(
+                            child: const Text(
                               "No",
                               style: TextStyle(
                                 color: Colors.blue,
@@ -51,9 +56,13 @@ class CartPage extends StatelessWidget {
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
-                              Provider.of<CartProvider>(context, listen: false).removeProduct(cartItem);
+                              // Provider.of<CartProvider>(context, listen: false).removeProduct(cartItem);
+                              // Listen is set to false in the line above, which means we are not watching but reading from provider.
+                              // So we do context.read()
+                              // read() is an extension on BuildContext from flutter
+                              context.read<CartProvider>().removeProduct(cartItem);
                             },
-                            child: Text(
+                            child: const Text(
                               "Yes",
                               style: TextStyle(
                                 color: Colors.red,
