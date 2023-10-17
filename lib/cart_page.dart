@@ -11,7 +11,8 @@ class CartPage extends StatelessWidget {
     // final cart = Provider.of<CartProvider>(context).cart;
     // provider is trigger by the extension method watch().
     // It gives the same result as the line above
-    // watch() is an extension on BuildContext from flutter
+    // watch() is an extension on BuildContext from flutter.
+    // It cannot be called outside build function
     final cart = context.watch<CartProvider>().cart;
 
     return Scaffold(
@@ -59,7 +60,8 @@ class CartPage extends StatelessWidget {
                               // Provider.of<CartProvider>(context, listen: false).removeProduct(cartItem);
                               // Listen is set to false in the line above, which means we are not watching but reading from provider.
                               // So we do context.read()
-                              // read() is an extension on BuildContext from flutter
+                              // read() is an extension on BuildContext from flutter.
+                              // It cannot be called inside build function
                               context.read<CartProvider>().removeProduct(cartItem);
                             },
                             child: const Text(
