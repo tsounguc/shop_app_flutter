@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app_flutter/gobal_variables.dart';
-import 'package:shop_app_flutter/product_details_page.dart';
-import 'cart_provider.dart';
-import 'home_page.dart';
+import 'package:shop_app_flutter/pages/product_details_page.dart';
+import 'providers/cart_provider.dart';
+import 'pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());

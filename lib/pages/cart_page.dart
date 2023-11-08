@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'cart_provider.dart';
+import '../providers/cart_provider.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -9,7 +9,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final cart = Provider.of<CartProvider>(context).cart;
-    // provider is trigger by the extension method watch().
+    // provider is triggered by the extension method watch().
     // It gives the same result as the line above
     // watch() is an extension on BuildContext from flutter.
     // It cannot be called outside build function
